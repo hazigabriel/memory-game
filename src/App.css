@@ -1,0 +1,142 @@
+/*General START*/
+* {
+  margin: 0;
+  padding: 0
+}
+
+.App {
+	background: linear-gradient(-45deg, #19e065 , #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	min-height: 100vh;
+  font-family: 'Outfit', sans-serif;
+}
+
+
+/*General END*/
+
+/*Keyframe animations START*/
+ 
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+/*Keyframe animations END*/
+
+/*Header START*/
+
+.headerSection {
+  display:  flex;
+  justify-content: center;
+  background-color: #ffffff60;
+  align-items: center;
+  justify-content: space-between;
+}
+.gameInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:2.5rem;
+  width:2.5rem;
+  border-radius: 25px;
+  border: 3px solid #ffffff50;
+  cursor: pointer;
+  user-select: none;
+  margin: 0 2rem
+}
+.gameInfo p {
+  font-size: 2em;
+  font-weight: 700;
+  color: #ffffff80
+}
+.gameInfo:hover {
+  border: 3px solid #ffffff90;
+}
+.gameInfo:hover p {
+  color: #ffffff;
+}
+.scoreboardWrapper {
+  margin: 0 2rem;
+  color: #ffffff90
+}
+.headerLogo {
+  width: 42rem;
+  user-select: none;
+}
+
+/*Header END*/
+/*Main Content START*/
+.mainContent {
+ 
+  width: 62rem;
+  margin: 0 auto;
+  padding: 1rem 0
+}
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+}
+.loadingImg {
+  width: 12em;
+  display: none;
+  animation: rotation 1.5s infinite ease-in-out;
+}
+.currentLevel {
+  text-align: center;
+  padding-bottom: 2rem;
+  user-select: none;
+  color: #ffffff90;
+  letter-spacing: 2px;
+  font-size: 1.4em;
+}
+.cardsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem 4.5rem;
+  justify-content: space-between;
+ 
+}
+.card {
+  width: 11rem;
+  min-height: 13rem;
+  background-color: #ffffff60;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+  word-break: break-word;
+}
+.card:hover {
+   background-color: #ffffff70;
+  box-shadow: 0 0 5px 2px white;
+ 
+}
+.card img {
+  max-width:100%;
+  max-height:100%;
+  border-radius: 5px 5px 0 0;
+}
+.card p {
+  text-align: center;
+  user-select: none;
+  color:white;
+  text-shadow: 0 0 2px black;
+  font-size: 1.2em;
+}
+/*Main Content END*/
