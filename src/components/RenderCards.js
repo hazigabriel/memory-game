@@ -1,9 +1,10 @@
 import React from 'react'
+import {gameLogic} from './GameLogic'
 
 function RenderCards(props) {
     function renderCard(charName, imgSource ) {
         return (
-            <div className="card">
+            <div className="card" data-selected={false} onClick={gameLogic}>
                 <img src={imgSource}></img>
                 <p>{charName}</p>
             </div>
