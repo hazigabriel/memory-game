@@ -15,8 +15,9 @@ function CardsLogic(props) {
      }
     //no of cards per row, to be multiplied by the level no, for eg for for level one we have 4 cards, 
     //1*4, for level two we have 8 cards, 2*4
-    const cardsNo = 8 ; 
-
+    const cardsNo = 4 ; 
+    
+    
     useEffect(() => {
         if(cardsNo === props.cards.length){
  
@@ -27,7 +28,8 @@ function CardsLogic(props) {
             .then(result => result.json())
             .then(
                 (result) => {
-                    let newCard = [result.name, result.image]
+                    let selected = false;
+                    let newCard = [result.name, result.image, props.cards.length, selected]
                     props.setCards([...props.cards, newCard])
                 },
                 (error) => {

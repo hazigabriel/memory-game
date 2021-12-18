@@ -1,38 +1,37 @@
 import React, {useState} from 'react'
 
 
-function gameLogic(e){
-
-    if(e.target.parentElement.dataset.selected === "true") {
+function gameLogic(cardId, cards, setCards){
+      if(cards[cardId][3] === "true") {
         alert("You have selected this one already!")
          
     } else {
-        e.target.parentElement.dataset.selected = true
+        cards[cardId][3] = true
     }
-    
-    checkWinCondition()
-}
+    console.log(cards)
+    checkWinCondition(cards)
+}   
 
  
-function checkWinCondition(){
-    let cards = Array.from(document.querySelectorAll(".card"));
+function checkWinCondition(cards){
     let selectedCards = [];
     cards.map(function(card){
-        if(card.dataset.selected === 'true'){
+         
+        if(card[3] === true){
             selectedCards = [...selectedCards, card]
         }
     })
     
     if(cards.length === selectedCards.length) {
-        alert("Bravo ba");
-        resetSelectedCards()
+        alert("Level completed");
+        resetSelectedCards(cards)
     }  
  
 }
-function resetSelectedCards() {
-    let cards = Array.from(document.querySelectorAll(".card"));
+function resetSelectedCards(cards) {
+     
     cards.map(function(card){
-        card.dataset.selected = false;
+        card[3] = false
     })
 }
 // function randomizeCards(cards){
