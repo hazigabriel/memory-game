@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
- 
+
 
 function CardsLogic(props) {
  
@@ -13,15 +13,15 @@ function CardsLogic(props) {
         }
         return number
      }
+
+     
     //no of cards per row, to be multiplied by the level no, for eg for for level one we have 4 cards, 
     //1*4, for level two we have 8 cards, 2*4
-    const cardsNo = 4 ; 
-    
-    
+    const cardsNo = props.currentLevel * 4 ; 
+     
     useEffect(() => {
-        if(cardsNo === props.cards.length){
- 
-            console.log(props.cards)
+        if(cardsNo == props.cards.length){
+            //we fetch new cards until the level requirement is met 
         } else {
          
             fetch("https://rickandmortyapi.com/api/character/"+randomCharacterNumber())
@@ -37,7 +37,7 @@ function CardsLogic(props) {
                 }
             )
          }
-    }, [props.cards])
+    }, [props.cards, cardsNo])
     return (
         null
     )
