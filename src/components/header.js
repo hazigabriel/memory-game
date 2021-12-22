@@ -1,12 +1,12 @@
 import logo from "./images/header-logo.png"
 
 
-function Header() {
+function Header(props) {
     
     return (
         <section class="headerSection">
             <div className="scoreboardWrapper">
-                <h2>Current score: 2</h2>
+                <h2>Current score: {props.currentScore}</h2>
                 <h2>Best score: 23</h2>
             </div>
             <img src={logo} className="headerLogo"></img>

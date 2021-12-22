@@ -19,27 +19,31 @@ function GameLogic(cardId, cards){
 }  
 
 function roundLogic(card,cards){
-    // cards.map(elem => {
-    //     if(elem[0] == card[0]) {
-            
-    //     }
-    //     alert("looped elem is: " + elem[0] + " while clicked elem is" + card[0])
-    // })
+    cards.map(elem => {
+        if(elem[0] == card[0]) {
+            //alert("looped elem is: " + elem[0] + " while clicked elem is" + card[0])
+            if(card[3] == true) {
+                //reset game
+                alert("You have selected this one already!")
+                 
+            } else {
+                card[3] = true
+            }
+        }
+    })
 
-    if(card[3] == true) {
-        //reset game
-        alert("You have selected this one already!")
+    //trebuie sa targetam functia asta, sa map-uim peste carti pana gasesti id ul cartii click-uite, si abia dupa sa updatam daca a fost aleasa
+    // if(card[3] == true) {
+    //     //reset game
+    //     alert("You have selected this one already!")
          
-    } else {
-        card[3] = true
-    }
-    console.log(card)
-    
+    // } else {
+    //     card[3] = true
+    // }
+     
     
 
  }
-///DE FACUT GAME LOGIC UN FUNCTIONAL COMPONENT OF ITS ON, CARE ACCEPTA PROPS, PENTRU CA CAND DAM CLICK PE UN DIV, SA LUAM DIV ID
-//SA TARGETAM CARD STATE, SI SA SA SCHIMBA CARD STATE-UL ALA
  
 function checkWinCondition(cards){
     let selectedCards = [];
@@ -71,12 +75,20 @@ function shuffle(array) {
         x = array[i];
         array[i] = array[j];
         array[j] = x;
-    }
-    
+    };
+    console.log(array)
     return array
 }
  
+function swiftId(array){
+    //after the elements are swifted, their ID remains the same, when clicking the element we obtain the parentsId, and after shuffling the cards
+    //the ID no longe
+    for(let i = 0; i < array.length; i++){
+        array[i][2] = i;
+     }
+    return array
+}
 
 
-export { roundLogic, checkWinCondition, shuffle}
+export { roundLogic, checkWinCondition, shuffle, swiftId}
 

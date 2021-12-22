@@ -3,12 +3,13 @@ import Header from './components/header'
 import CardsLogic from './components/cardsLogic'
 import React, {useState, useEffect} from 'react'
 import RenderCard from './components/RenderCards'
-import {roundLogic, checkWinCondition, shuffle} from './components/GameLogic'
+import {roundLogic, checkWinCondition, shuffle, swiftId} from './components/GameLogic'
 
 function App() {
   const [cards, setCards] = useState([]);
   const [level, setLevel] = useState(1)
   const [roundWon, setRoundWon] = useState(true)
+  const [currentScore, setCurrentScore] = useState(0)
 
 
    
@@ -18,10 +19,12 @@ function App() {
       
     roundLogic(cards[currentId],cards)
     let newCards = shuffle([...cards])
-    console.table(cards)
-    console.table(newCards)
+    // console.table(cards)
+    // console.table(newCards)
+    swiftId(newCards)
+    setCards(newCards)
+    setCurrentScore(currentScore +1)
 
-    setCards(shuffle(newCards))
     // console.table(cards)
     // console.table(newCards)
 
@@ -30,8 +33,7 @@ function App() {
       setLevel(level+1)
       alert("gata runda")
     } else {
- 
-    }
+     }
     
     }
 
@@ -39,7 +41,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header currentScore={currentScore} />
       
       <div className="mainContent">
             <div className="cardsWrapper">     
