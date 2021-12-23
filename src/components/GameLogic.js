@@ -1,49 +1,23 @@
 import React, {useState, useEffect} from 'react'
 
+// function useGameLogic(cards){
 
-
-function GameLogic(cardId, cards){
-   
-    if(cards[cardId][3] == true) {
-        //reset game
-        alert("You have selected this one already!")
-         
-    } else {
-        cards[cardId][3] = true;
-    }
-   
-    checkWinCondition(cards)
-
-    return shuffle(cards)
-
-}  
-
+//     return cards
+// }
 function roundLogic(card,cards){
+     
+    //alert("looped elem is: " + elem[0] + " while clicked elem is" + card[0])
     cards.map(elem => {
         if(elem[0] == card[0]) {
-            //alert("looped elem is: " + elem[0] + " while clicked elem is" + card[0])
             if(card[3] == true) {
-                //reset game
-                alert("You have selected this one already!")
-                 
-            } else {
+                //reset gameS
+              } else {
                 card[3] = true
-            }
+             }
         }
     })
-
-    //trebuie sa targetam functia asta, sa map-uim peste carti pana gasesti id ul cartii click-uite, si abia dupa sa updatam daca a fost aleasa
-    // if(card[3] == true) {
-    //     //reset game
-    //     alert("You have selected this one already!")
-         
-    // } else {
-    //     card[3] = true
-    // }
-     
-    
-
- }
+ 
+}
  
 function checkWinCondition(cards){
     let selectedCards = [];

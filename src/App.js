@@ -10,38 +10,47 @@ function App() {
   const [level, setLevel] = useState(1)
   const [roundWon, setRoundWon] = useState(true)
   const [currentScore, setCurrentScore] = useState(0)
+  const [bestScore, setBestScore] = useState(0)
+ 
+  
+ 
 
-
-   
   function handleClick(e){
     let currentId = e.target.parentElement.id
 
-      
-    roundLogic(cards[currentId],cards)
-    let newCards = shuffle([...cards])
-    // console.table(cards)
-    // console.table(newCards)
-    swiftId(newCards)
-    setCards(newCards)
-    setCurrentScore(currentScore +1)
-
-    // console.table(cards)
-    // console.table(newCards)
-
-    if(checkWinCondition(cards) === true) {
+    if(cards[currentId][3] == true) {
+      //resetRound
+      alert("You lost, mate");
       setCards([])
-      setLevel(level+1)
-      alert("gata runda")
+      setLevel(1)
+      setCurrentScore(0)
     } else {
-     }
+      cards[currentId][3] =true;
+      setCurrentScore(currentScore + 1);
+      
+      let newCards = shuffle([...cards]);
+      swiftId(newCards);
+      setCards(newCards);
+      if(checkWinCondition(cards) === true) {
+        setCards([])
+        setLevel(level+1)
+        alert("Advanced to level" + level +1)
+       }
+       
+    }
     
+   
+    
+    
+
+ 
     }
 
 
 
   return (
     <div className="App">
-      <Header currentScore={currentScore} />
+      <Header currentScore={currentScore} bestScore={bestScore}/>
       
       <div className="mainContent">
             <div className="cardsWrapper">     

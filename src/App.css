@@ -123,9 +123,9 @@
   word-break: break-word;
 }
 .card:hover {
-   background-color: #ffffff70;
+  background-color: #ffffff70;
   box-shadow: 0 0 5px 2px white;
- 
+  transform: scale(1.02);
 }
 .card img {
   height: 11rem;
