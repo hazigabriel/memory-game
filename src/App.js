@@ -1,72 +1,43 @@
 import './App.css';
 import Header from './components/header'
-import CardsLogic from './components/cardsLogic'
 import React, {useState, useEffect} from 'react'
-import RenderCard from './components/RenderCards'
-import {roundLogic, checkWinCondition, shuffle, swiftId} from './components/GameLogic'
+import GameLogic from './components/GameLogic'
 
 function App() {
   const [cards, setCards] = useState([]);
   const [level, setLevel] = useState(1)
-  const [roundWon, setRoundWon] = useState(true)
   const [currentScore, setCurrentScore] = useState(0)
   const [bestScore, setBestScore] = useState(0)
  
   
  
-
-  function handleClick(e){
-    let currentId = e.target.parentElement.id
-
-    if(cards[currentId][3] == true) {
-      //resetRound
-      alert("You lost, mate");
-      setCards([])
-      setLevel(1)
-      setCurrentScore(0)
-    } else {
-      cards[currentId][3] =true;
-      setCurrentScore(currentScore + 1);
-      
-      let newCards = shuffle([...cards]);
-      swiftId(newCards);
-      setCards(newCards);
-      if(checkWinCondition(cards) === true) {
-        setCards([])
-        setLevel(level+1)
-        alert("Advanced to level" + level +1)
-       }
-       
-    }
-    
-   
-    
-    
-
+ 
+  //as the state setter is async, we are awaiting the currentScore to be fully assigned(via the gameLogic component)before we assign a bestScore value
+  useEffect(() => {
+    if(currentScore > bestScore) {
+      setBestScore(currentScore)
  
     }
-
+  }, [currentScore])
 
 
   return (
     <div className="App">
-      <Header currentScore={currentScore} bestScore={bestScore}/>
+
+      <Header 
+        currentScore={currentScore} 
+        bestScore={bestScore}
+      />
       
-      <div className="mainContent">
-            <div className="cardsWrapper">     
-                {cards.map((elem) => {
-                  return <RenderCard 
-                    charName={elem[0]} 
-                    imgSource={elem[1]} 
-                    cardId={elem[2]} 
-                    selected={elem[3]}
-                    handleClick={(e) => handleClick(e)} 
-                  /> 
-                })}
-            </div>
-        </div>
-      <CardsLogic cards={cards} setCards={setCards} currentLevel={level} roundWon={roundWon}/>
-     </div>
+      <GameLogic 
+        passedCards={cards} 
+        level={level}
+        setLevel={setLevel}
+        currentScore={currentScore}
+        setCurrentScore={setCurrentScore}
+      />
+
+    </div>
   );
 }
 

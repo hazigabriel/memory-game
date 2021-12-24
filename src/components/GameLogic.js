@@ -1,23 +1,55 @@
 import React, {useState, useEffect} from 'react'
+import RenderCard from './RenderCards'
+import CardsLogic from './cardsLogic'
 
-// function useGameLogic(cards){
 
-//     return cards
-// }
-function roundLogic(card,cards){
-     
-    //alert("looped elem is: " + elem[0] + " while clicked elem is" + card[0])
-    cards.map(elem => {
-        if(elem[0] == card[0]) {
-            if(card[3] == true) {
-                //reset gameS
-              } else {
-                card[3] = true
-             }
+function GameLogic(props){
+
+    const [cards, setCards] = useState(props.passedCards);
+    const [level, setLevel] = useState(props.level)
+  
+    function handleClick(e){
+        let currentId = e.target.parentElement.id
+    
+        if(cards[currentId][3] == true) {
+            //resetRound
+            alert("Lost game tho")
+            setCards([])
+            setLevel(1)
+            props.setCurrentScore(0)  
+        } else {
+            cards[currentId][3] =true;
+            props.setCurrentScore(props.currentScore + 1);
+      
+            let newCards = shuffle([...cards]);
+            swiftId(newCards);
+            setCards(newCards);
+            if(checkWinCondition(cards) === true) {
+                setCards([])
+                setLevel(level+1)
+                
+            }
         }
-    })
- 
+      } 
+    console.log(cards)
+    return (
+        <div className="mainContent">
+            <div className="cardsWrapper">     
+                {cards.map((elem) => {
+                  return <RenderCard 
+                    charName={elem[0]} 
+                    imgSource={elem[1]} 
+                    cardId={elem[2]} 
+                    selected={elem[3]}
+                    handleClick={(e) => handleClick(e)} 
+                  /> 
+                })}
+            </div>
+            <CardsLogic cards={cards} setCards={setCards} currentLevel={level}/>
+        </div>
+    )
 }
+
  
 function checkWinCondition(cards){
     let selectedCards = [];
@@ -36,11 +68,7 @@ function checkWinCondition(cards){
     }
  
 }
-function resetSelectedCards(cards) {
-    cards.map(function(card){
-        card[3] = false
-    })
-}
+ 
 //https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
 function shuffle(array) {
     let j, x, i;
@@ -50,7 +78,7 @@ function shuffle(array) {
         array[i] = array[j];
         array[j] = x;
     };
-    console.log(array)
+    //console.log(array)
     return array
 }
  
@@ -64,5 +92,5 @@ function swiftId(array){
 }
 
 
-export { roundLogic, checkWinCondition, shuffle, swiftId}
+export default GameLogic
 
