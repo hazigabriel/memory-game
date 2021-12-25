@@ -4,13 +4,12 @@ import React, {useState, useEffect} from 'react'
 import GameLogic from './components/GameLogic'
 
 function App() {
-  const [cards, setCards] = useState([]);
+   
   const [level, setLevel] = useState(1)
   const [currentScore, setCurrentScore] = useState(0)
   const [bestScore, setBestScore] = useState(0)
  
   
- 
  
   //as the state setter is async, we are awaiting the currentScore to be fully assigned(via the gameLogic component)before we assign a bestScore value
   useEffect(() => {
@@ -30,8 +29,7 @@ function App() {
       />
       
       <GameLogic 
-        passedCards={cards} 
-        level={level}
+         level={level}
         setLevel={setLevel}
         currentScore={currentScore}
         setCurrentScore={setCurrentScore}

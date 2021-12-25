@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react'
 
 
 function CardsLogic(props) {
- 
-  
+   
     const randomCharacterNumber = () => {
          //return a random number between 1 and 826
          //as our api currently has 826 possible characters
@@ -14,30 +13,37 @@ function CardsLogic(props) {
         return number
      }
 
-     
+    
     //no of cards per row, to be multiplied by the level no, for eg for for level one we have 4 cards, 
     //1*4, for level two we have 8 cards, 2*4
     const cardsNo = props.currentLevel * 4 ; 
-     
     useEffect(() => {
-        if(cardsNo == props.cards.length){
+        let loadingImg = document.querySelector(".loadingImg");
+        
+        if(cardsNo == props.tempCards.length){
             //we fetch new cards until the level requirement is met 
+             loadingImg.style.display = "none";
+             props.setCards(props.tempCards)
+              
+
         } else {
-         
+            loadingImg.style.display = "block";
+
             fetch("https://rickandmortyapi.com/api/character/"+randomCharacterNumber())
             .then(result => result.json())
             .then(
                 (result) => {
                     let selected = false;
-                    let newCard = [result.name, result.image, props.cards.length, selected]
-                    props.setCards([...props.cards, newCard])
-                },
+                    let newCard = [result.name, result.image, props.tempCards.length, selected]
+                    props.setTempCards([...props.tempCards, newCard])
+                     
+                 },
                 (error) => {
                     alert("error while loading api")
                 }
             )
          }
-    }, [props.cards, cardsNo])
+    }, [props.tempCards, cardsNo])
     return (
         null
     )

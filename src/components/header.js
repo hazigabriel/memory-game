@@ -4,7 +4,7 @@ import logo from "./images/header-logo.png"
 function Header(props) {
     
     return (
-        <section class="headerSection">
+        <section className="headerSection">
             <div className="scoreboardWrapper">
                 <h2>Current score: {props.currentScore}</h2>
                 <h2>Best score: {props.bestScore}</h2>

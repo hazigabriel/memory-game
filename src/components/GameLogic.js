@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import RenderCard from './RenderCards'
 import CardsLogic from './cardsLogic'
+import lodingImg from "./images/loading.png"
 
 
 function GameLogic(props){
 
-    const [cards, setCards] = useState(props.passedCards);
+    const [cards, setCards] = useState([]);
+    const [tempCards, setTempCards] = useState([]);
     const [level, setLevel] = useState(props.level)
   
     function handleClick(e){
@@ -15,6 +17,7 @@ function GameLogic(props){
             //resetRound
             alert("Lost game tho")
             setCards([])
+            setTempCards([])
             setLevel(1)
             props.setCurrentScore(0)  
         } else {
@@ -26,14 +29,18 @@ function GameLogic(props){
             setCards(newCards);
             if(checkWinCondition(cards) === true) {
                 setCards([])
+                setTempCards([])
                 setLevel(level+1)
                 
             }
         }
       } 
-    console.log(cards)
+    //console.log(cards)
     return (
         <div className="mainContent">
+             <div className="loadingContainer">
+                <img src={lodingImg} className="loadingImg"></img>   
+            </div>
             <div className="cardsWrapper">     
                 {cards.map((elem) => {
                   return <RenderCard 
@@ -45,7 +52,13 @@ function GameLogic(props){
                   /> 
                 })}
             </div>
-            <CardsLogic cards={cards} setCards={setCards} currentLevel={level}/>
+            <CardsLogic 
+                
+                setCards={setCards} 
+                currentLevel={level}
+                tempCards={tempCards}
+                setTempCards={setTempCards}
+            />
         </div>
     )
 }
