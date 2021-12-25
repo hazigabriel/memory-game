@@ -43,7 +43,7 @@ function CardsLogic(props) {
                 }
             )
          }
-    }, [props, cardsNo])
+    }, [props.tempCards, cardsNo])
     return (
         null
     )
