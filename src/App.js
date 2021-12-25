@@ -17,7 +17,7 @@ function App() {
       setBestScore(currentScore)
  
     }
-  }, [currentScore])
+  }, [currentScore, bestScore])
 
 
   return (
@@ -29,7 +29,7 @@ function App() {
       />
       
       <GameLogic 
-         level={level}
+        level={level}
         setLevel={setLevel}
         currentScore={currentScore}
         setCurrentScore={setCurrentScore}

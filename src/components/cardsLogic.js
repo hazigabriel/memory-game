@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import {useEffect} from 'react'
 
 
 function CardsLogic(props) {
@@ -20,7 +20,7 @@ function CardsLogic(props) {
     useEffect(() => {
         let loadingImg = document.querySelector(".loadingImg");
         
-        if(cardsNo == props.tempCards.length){
+        if(cardsNo === props.tempCards.length){
             //we fetch new cards until the level requirement is met 
              loadingImg.style.display = "none";
              props.setCards(props.tempCards)
@@ -43,7 +43,7 @@ function CardsLogic(props) {
                 }
             )
          }
-    }, [props.tempCards, cardsNo])
+    }, [props, cardsNo])
     return (
         null
     )

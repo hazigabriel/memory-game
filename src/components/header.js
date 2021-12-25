@@ -9,7 +9,7 @@ function Header(props) {
                 <h2>Current score: {props.currentScore}</h2>
                 <h2>Best score: {props.bestScore}</h2>
             </div>
-            <img src={logo} className="headerLogo"></img>
+            <img src={logo} alt="logo" className="headerLogo"></img>
             <div className="gameInfo"><p>?</p></div>
         </section>
     )

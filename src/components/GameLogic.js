@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import RenderCard from './RenderCards'
 import CardsLogic from './cardsLogic'
 import lodingImg from "./images/loading.png"
@@ -13,7 +13,7 @@ function GameLogic(props){
     function handleClick(e){
         let currentId = e.target.parentElement.id
     
-        if(cards[currentId][3] == true) {
+        if(cards[currentId][3] === true) {
             //resetRound
             alert("Lost game tho")
             setCards([])
@@ -39,11 +39,12 @@ function GameLogic(props){
     return (
         <div className="mainContent">
              <div className="loadingContainer">
-                <img src={lodingImg} className="loadingImg"></img>   
+                <img src={lodingImg} alt="loading" className="loadingImg"></img>   
             </div>
             <div className="cardsWrapper">     
                 {cards.map((elem) => {
                   return <RenderCard 
+                    key={elem[2]}
                     charName={elem[0]} 
                     imgSource={elem[1]} 
                     cardId={elem[2]} 
@@ -68,10 +69,14 @@ function checkWinCondition(cards){
     let selectedCards = [];
  
     cards.map(function(card){
-         
+
+
         if(card[3] === true){
             selectedCards = [...selectedCards, card]
         }
+
+        //added return just to avoid the console warning
+        return null 
     })
     
     if(cards.length === selectedCards.length) {
