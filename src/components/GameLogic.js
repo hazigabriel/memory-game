@@ -13,9 +13,17 @@ function GameLogic(props){
      
     function handleClick(e){
         let currentId = e.target.parentElement.id
-        
+    
+        if(isNaN(parseInt(currentId))) {
+            currentId = e.target.id
+            //when clicking a card the user might click between the card description
+            //and the card image, and select the div directly, in this case we have no
+            //card paren Id to return and the app would crash, so we assign the id 
+            //from the card directly, not the parents id as in case of child components
+         }  
+
         if(cards[currentId][3] === true) {
-            //resetRound
+            //game lost, as same card was selected twice
             showGameOver()
             setCards([])
             setTempCards([])
@@ -24,7 +32,7 @@ function GameLogic(props){
         } else {
             cards[currentId][3] =true;
             props.setCurrentScore(props.currentScore + 1);
-      
+            
             let newCards = shuffle([...cards]);
             swiftId(newCards);
             setCards(newCards);
@@ -47,7 +55,7 @@ function GameLogic(props){
                     <h3 onClick={hideHelpCard}>x</h3>
                     <h2>how to play</h2>
                     <p>The game goal is to select a card, remember its character and not select it again during the same round.</p>
-                    <p>Once each card is selected once, we advance to the next round, with each additional level
+                    <p>Once each card is selected once we advance to the next round, with each additional level
                         we have 4 extra cards to chose from.  </p>
                     <p>The game ends once the same card is selected twice in the same round</p>
                 </div>
