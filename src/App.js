@@ -22,12 +22,10 @@ function App() {
 
   return (
     <div className="App">
-
       <Header 
         currentScore={currentScore} 
         bestScore={bestScore}
       />
-      
       <GameLogic 
         level={level}
         setLevel={setLevel}

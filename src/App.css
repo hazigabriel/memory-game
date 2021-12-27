@@ -84,14 +84,72 @@
 /*Header END*/
 /*Main Content START*/
 .mainContent {
- 
   width: 62rem;
   margin: 0 auto;
   padding: 1rem 0
 }
+.helpWrapper {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  position: absolute;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.8);
+  left: 0;
+  top: 0;
+  width:100vw;
+  height:100vh;
+}
+.helpCard {
+  background-color: rgba(27, 27, 27, 0.8); 
+  color: white;
+  width:50rem;
+  height:20rem;
+  border-radius:10px;
+ }
+.helpCard h3 {
+  text-align: right;
+  font-size: 2em;
+  margin-right: 1.5rem;
+  user-select: none;
+  cursor:pointer
+}
+.helpCard h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.helpCard p {
+  padding:1rem;
+}
+.gameOverWrap {
+  width:100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  top:0;
+  left:0;
+  position: absolute;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+ }
+.gameOverWrap div {
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+.gameOverWrap h2 {
+  font-size: 5em
+}
+.gameOverWrap p {
+  font-size: 1.5em;
+  text-align: center;
+}
 .loadingContainer {
   display: flex;
   justify-content: center;
+  user-select: none;
 }
 .loadingImg {
   width: 12em;

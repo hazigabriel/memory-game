@@ -9,13 +9,14 @@ function GameLogic(props){
     const [cards, setCards] = useState([]);
     const [tempCards, setTempCards] = useState([]);
     const [level, setLevel] = useState(props.level)
-  
+    const [startOver, setStartOver] = useState(true)
+     
     function handleClick(e){
         let currentId = e.target.parentElement.id
-    
+        
         if(cards[currentId][3] === true) {
             //resetRound
-            alert("Lost game tho")
+            showGameOver()
             setCards([])
             setTempCards([])
             setLevel(1)
@@ -41,6 +42,22 @@ function GameLogic(props){
              <div className="loadingContainer">
                 <img src={lodingImg} alt="loading" className="loadingImg"></img>   
             </div>
+            <div className="helpWrapper" >
+                <div className='helpCard'>
+                    <h3 onClick={hideHelpCard}>x</h3>
+                    <h2>how to play</h2>
+                    <p>The game goal is to select a card, remember its character and not select it again during the same round.</p>
+                    <p>Once each card is selected once, we advance to the next round, with each additional level
+                        we have 4 extra cards to chose from.  </p>
+                    <p>The game ends once the same card is selected twice in the same round</p>
+                </div>
+            </div>
+            <div className="gameOverWrap"  >
+                <div onClick={hideGameOver}>
+                    <h2>Game over</h2>
+                    <p>Click here to start over</p>
+                </div>
+            </div>
             <div className="cardsWrapper">     
                 {cards.map((elem) => {
                   return <RenderCard 
@@ -54,7 +71,7 @@ function GameLogic(props){
                 })}
             </div>
             <CardsLogic 
-                
+                startOver={startOver}
                 setCards={setCards} 
                 currentLevel={level}
                 tempCards={tempCards}
@@ -62,14 +79,23 @@ function GameLogic(props){
             />
         </div>
     )
+    function hideHelpCard() {
+        document.querySelector(".helpWrapper").style.display = "none";
+    }
+    function showGameOver() {
+        setStartOver(false)
+        document.querySelector(".gameOverWrap").style.display = "flex";
+    }
+    function hideGameOver(){
+        setStartOver(true)
+        document.querySelector(".gameOverWrap").style.display = "none";
+    }
 }
 
  
 function checkWinCondition(cards){
     let selectedCards = [];
- 
     cards.map(function(card){
-
 
         if(card[3] === true){
             selectedCards = [...selectedCards, card]
@@ -111,4 +137,3 @@ function swiftId(array){
 
 
 export default GameLogic
-

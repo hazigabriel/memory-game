@@ -2,7 +2,9 @@ import logo from "./images/header-logo.png"
 
 
 function Header(props) {
-    
+    function showHelpCard() {
+        document.querySelector(".helpWrapper").style.display = "flex";
+    }
     return (
         <section className="headerSection">
             <div className="scoreboardWrapper">
@@ -10,7 +12,7 @@ function Header(props) {
                 <h2>Best score: {props.bestScore}</h2>
             </div>
             <img src={logo} alt="logo" className="headerLogo"></img>
-            <div className="gameInfo"><p>?</p></div>
+            <div className="gameInfo" onClick={showHelpCard}><p>?</p></div>
         </section>
     )
 
