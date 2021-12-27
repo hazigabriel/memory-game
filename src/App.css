@@ -218,21 +218,20 @@
   }
   .scoreboardWrapper {
     flex:40%;
-    order:2
-  }
+    order:2;
+    font-size: 3.2em;
+    font-size: 0.7em;
+   }
   .headerLogoWrapper {
-    width: 10rem !important;
-    flex:100%;
+     flex:100%;
     order:1;
     margin: 0 1rem
-  }
+}
   .headerLogo {
-    max-width: 25rem;
-    min-width: 15rem;
-  }
+    max-width: 100%;
+   }
   .gameInfo {
     order:2;
-   
     margin: 0 2rem
   }
   .helpCard {
@@ -247,10 +246,6 @@
   .helpCard {
     width: 90vw;
     min-height: 50vh;
-  }
-  .scoreboardWrapper {
-    font-size: 0.6em;
-    min-width: 3rem;
   }
   .mainContent {
      width: 11rem
@@ -320,8 +315,4 @@
   }
 }
 
-/* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-  
-}
  

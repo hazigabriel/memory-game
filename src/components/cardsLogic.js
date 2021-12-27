@@ -24,7 +24,6 @@ function CardsLogic(props) {
             loadingImg.style.display = "block";
         } else {
 
-         
             if(cardsNo === props.tempCards.length){
                 //we fetch new cards until the level requirement is met 
                 loadingImg.style.display = "none";
@@ -44,7 +43,7 @@ function CardsLogic(props) {
                         
                     },
                     (error) => {
-                        alert("error while loading api")
+                        alert("Error loading API, press OK to try again")
                     }
                 )
             }
