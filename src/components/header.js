@@ -11,7 +11,9 @@ function Header(props) {
                 <h2>Current score: {props.currentScore}</h2>
                 <h2>Best score: {props.bestScore}</h2>
             </div>
-            <img src={logo} alt="logo" className="headerLogo"></img>
+            <div className="headerLogoWrapper">
+                <img src={logo} alt="logo" className="headerLogo"></img>
+            </div>
             <div className="gameInfo" onClick={showHelpCard}><p>?</p></div>
         </section>
     )

@@ -53,10 +53,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height:2.5rem;
-  width:2.5rem;
-  border-radius: 25px;
-  border: 3px solid #ffffff50;
   cursor: pointer;
   user-select: none;
   margin: 0 2rem
@@ -64,9 +60,14 @@
 .gameInfo p {
   font-size: 2em;
   font-weight: 700;
-  color: #ffffff80
+  color: #ffffff80;
+  height:2.5rem;
+  width:2.5rem;
+  text-align: center;
+  border-radius: 25px;
+  border: 3px solid #ffffff50;
 }
-.gameInfo:hover {
+.gameInfo p:hover {
   border: 3px solid #ffffff90;
 }
 .gameInfo:hover p {
@@ -76,9 +77,15 @@
   margin: 0 2rem;
   color: #ffffff90
 }
-.headerLogo {
+.headerLogoWrapper {
   width: 42rem;
   user-select: none;
+  display: flex;
+  
+}
+.headerLogo {
+   
+  margin: 0 auto
 }
 
 /*Header END*/
@@ -104,8 +111,8 @@
 .helpCard {
   background-color: rgba(27, 27, 27, 0.8); 
   color: white;
-  width:50rem;
-  height:20rem;
+  width:50vw;
+  min-height:40vh;
   border-radius:10px;
  }
 .helpCard h3 {
@@ -202,3 +209,119 @@
  
 }
 /*Main Content END*/
+
+@media only screen and (max-width: 576px) and (min-width: 200px)  {
+  .headerSection {
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+  }
+  .scoreboardWrapper {
+    flex:40%;
+    order:2
+  }
+  .headerLogoWrapper {
+    width: 10rem !important;
+    flex:100%;
+    order:1;
+    margin: 0 1rem
+  }
+  .headerLogo {
+    max-width: 25rem;
+    min-width: 15rem;
+  }
+  .gameInfo {
+    order:2;
+   
+    margin: 0 2rem
+  }
+  .helpCard {
+    width: 90vw !important;
+    min-height: 50vh;
+  }
+  .gameInfo p {
+    height: 2rem;
+    width: 2rem;
+    font-size: 1.4em;
+  }
+  .helpCard {
+    width: 90vw;
+    min-height: 50vh;
+  }
+  .scoreboardWrapper {
+    font-size: 0.6em;
+    min-width: 3rem;
+  }
+  .mainContent {
+     width: 11rem
+  }
+}
+ 
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+ 
+  .headerLogo {
+    width: 20rem
+  }
+  .scoreboardWrapper {
+    font-size: 0.8em;
+    min-width: 7rem;
+  }
+  .helpCard {
+    width: 80vw;
+    min-height: 50vh;
+  }
+  
+  .scoreboardWrapper {
+    font-size: 0.7em;
+    min-width: 7rem;
+  }
+  .helpCard {
+    width: 80vw;
+    min-height: 50vh;
+  }
+  .mainContent {
+    width: 31rem
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .headerLogo {
+    width: 30rem
+  }
+  .scoreboardWrapper {
+    font-size: 0.8em;
+    min-width: 7rem;
+  }
+  .helpCard {
+    width: 80vw;
+    min-height: 50vh;
+  }
+  .mainContent {
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 1024px) {
+  .headerLogo {
+    width: 30rem
+  }
+  .scoreboardWrapper {
+    font-size: 0.8em;
+    min-width: 7rem;
+  }
+  .helpCard {
+    width: 80vw;
+    min-height: 50vh;
+  }
+  .mainContent {
+    width: 62rem
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  
+}
+ 
